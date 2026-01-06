@@ -2,6 +2,8 @@
 
 A simple, robust payload for seamlessly managing external MediaTek USB Wi-Fi adapters on the WiFi Pineapple. It handles driver loading, configuration mirroring, and automatic cleanup.
 
+## THIS PAYLOAD IS NOT REQUIRED FOR THE MK7AC ADAPTER. IT IS ALREADY PLUG AND PLAY
+
 ### ⚡ Usage Instructions (Important)
 You must run this payload **every time you change the physical state** of the adapter.
 
@@ -18,11 +20,11 @@ You must run this payload **every time you change the physical state** of the ad
 ---
 
 ### Requirements
-* **Modern MediaTek Chipsets Only:** This script targets endpoint `.3`, which is the standard for modern dual-band chips (e.g., **MT7612U**, **MT7921 / AMD RZ608**).
+* **Modern MediaTek Chipsets Only:** 
 * **Supported Drivers:** The device must have kernel support (`mt76`). Realtek and older chips are **not supported**.
 
 ### How it Works
-1.  **Detection:** Checks the external USB bus (`1-1.1`) at interface `.3`.
+1.  **Detection:** Checks the external USB bus and all interfaces for vendor specific "ff" interfaces.
 2.  **Mirror Mode:**
     * **If found:** It loads the driver and reads the bands from your Internal Radio (`wlan1mon`). It then applies those same bands to the External Radio (`wlan2mon`), acting as a "helper" for hopping.
     * **If missing:** It disables the external radio config and restarts services to return to a clean state.
