@@ -6,7 +6,7 @@ Platform: Hak5 WiFi Pineapple Pager
 
 Overview:
 
-This payload automates the deployment and execution of Responder on a WiFi Pineapple Pager. It handles dependency installation, Check for Responder, structured logging, and provides a built-in kill switch to safely stop Responder and collect captured loot.
+This payload automates the deployment and execution of Responder on a WiFi Pineapple Pager. It handles dependency installation, cloning Responder, structured logging, and provides a built-in kill switch to safely stop Responder and collect captured loot.
 
 The payload is designed for hands-off execution directly from the WiFi Pineapple Pager UI.
 
@@ -14,7 +14,7 @@ Features:
 
 Automatic dependency installation via opkg
 
-Alerts if Responder is not already present
+Clones Responder if not already present
 
 Runs Responder with common attack flags enabled
 
@@ -36,7 +36,9 @@ python3
 
 python3-netifaces
 
-Checks for Responder and if it is not found, it will alert you to place responder in /root/tools 
+git
+
+Clones Responder from: https://github.com/Hackazillarex/Responder.git (a revised Responder fork to work on the pager.)
 
 Clears old Responder logs
 
@@ -51,14 +53,14 @@ Copies captured loot and logs into the session folder
 Default Configuration:
 Setting	Value
 Interface	wlan0cli
-Responder Path	/root/payloads/user/exfiltration/Responder_Payload/responder
+Responder Path	/root/tools/responder
 Loot Base Dir	/root/loot/responder
 Session Naming	session_YYYYMMDD_HHMMSS
 Responder Flags Used
 
 Responder is launched with the following options:
 
--I wlan0cli – Interface
+-I wlan0cli – Interface (Client interface)
 
 -w – WPAD rogue proxy
 
