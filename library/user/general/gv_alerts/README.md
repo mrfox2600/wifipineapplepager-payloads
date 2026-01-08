@@ -105,7 +105,7 @@ The webhook runs on Google's free infrastructure and checks your Gmail for Googl
 
 ![Installed](screenshots/gv-installed.png)
 
-![Installed Menu](gv-installed-2.png)
+![Installed Menu](screenshots/gv-installed-2.png)
 
 ## Usage
 
